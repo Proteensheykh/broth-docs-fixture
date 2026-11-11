@@ -1,0 +1,33 @@
+---
+title: Getting started with Banking.Live
+broth_labels: [broth-domain-cards]
+---
+
+# Getting started with Banking.Live
+
+This guide describes how to onboard to the Banking.Live platform and make your first API call.
+It is aimed at developers integrating card issuing and account management.
+
+## Prerequisites
+
+Before you begin you need a sandbox tenant and a client credential pair.
+Contact your implementation manager to receive your `client_id` and `client_secret`.
+All sandbox calls use the base URL `https://uat.banking.live:55555/ppws/api`.
+
+## Authenticate
+
+Banking.Live uses OAuth 2.0 client-credentials.
+Exchange your client credentials for a short-lived bearer token, then send it as an
+`Authorization: Bearer <token>` header on every request.
+Tokens expire after 15 minutes, so cache and refresh them as needed.
+
+## Make your first call
+
+Once you have a token you can create your first card.
+See the Card Issuance reference for the full request and response schema.
+A minimal request supplies an account reference and a product code.
+
+## Next steps
+
+Read the card lifecycle guides to understand renewal and replacement.
+Review the release notes to track breaking changes between platform versions.

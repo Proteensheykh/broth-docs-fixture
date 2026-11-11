@@ -1,0 +1,10 @@
+version: 1
+site: https://developer.example.com
+pages:
+  - root: docs
+    include: ["**/*.mdx"]
+    url: "/bankinglive/docs/{path}"
+    unpublished_when: [draft]
+openapi:
+  - spec: openapi/banking-live.yaml
+    url: "/bankinglive/api/{tag:kebab}/{operationId:kebab}"

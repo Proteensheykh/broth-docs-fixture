@@ -1,0 +1,33 @@
+---
+title: Card renewal and replacement
+broth_labels: [broth-domain-cards]
+---
+
+# Card renewal and replacement
+
+This guide describes how the card renewal and card replacement process works in Banking.Live.
+Renewal issues a new card with a later expiry to the same cardholder, keeping the account link.
+Replacement issues a new card because the previous one was lost, stolen, or damaged.
+
+## When cards are renewed
+
+Cards are eligible for renewal in the window before their expiry date.
+By default the renewal window opens 60 days before expiry.
+You can trigger renewal manually through the API or rely on automatic batch renewal.
+
+## Renew a card via the API
+
+Call the Card Renewal endpoint with the card reference of the expiring card.
+The platform returns the new card reference and its masked PAN.
+Use Card Renewal V2 if you need to control the new expiry date and carry over custom fields.
+
+## Replacement flow
+
+Replacement requires a reason code such as `LOST`, `STOLEN`, or `DAMAGED`.
+Replacing a card immediately blocks the old card to prevent further authorizations.
+The cardholder keeps the same account and available balance.
+
+## Common errors
+
+A renewal outside the eligibility window returns `CARD_NOT_RENEWABLE`.
+A missing or invalid card reference returns `CARD_NOT_FOUND`.

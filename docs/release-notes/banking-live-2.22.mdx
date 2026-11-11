@@ -1,0 +1,23 @@
+---
+title: "Release notes: Banking.Live 2.22"
+broth_labels: [broth-domain-cards]
+---
+
+# Release notes: Banking.Live 2.22
+
+This release adds Card Renewal V2 and improves the card lifecycle APIs.
+
+## New features
+
+Card Renewal V2 lets integrators set an explicit new expiry date and carry over custom fields.
+Bulk blank card creation now supports up to 500 cards per request.
+
+## Changes
+
+The renewal eligibility window default changed from 30 days to 60 days before expiry.
+Error responses now include a machine-readable `errorCode` field alongside the message.
+
+## Deprecations
+
+Card Renewal v1 remains supported but is deprecated in favor of Card Renewal V2.
+Plan to migrate before the 3.0 release.

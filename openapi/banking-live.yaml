@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Banking.Live API
+  version: "2.22"
+  description: Card issuing and account management API.
+servers:
+  - url: https://uat.banking.live:55555/ppws/api
+    description: Sandbox
+tags:
+  - name: Card issuance
+    description: Create, renew, and replace cards.
+paths:
+  /pws/pws_card_renewal/:
+    post:
+      operationId: cardRenewal
+      summary: Card Renewal
+      description: >
+        Renews an expiring card and returns the new card reference.
+        Deprecated in favor of Card Renewal V2.
+      tags:
+        - Card issuance
+      deprecated: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CardRenewalRequest"
+      responses:
+        "200":
+          description: Card renewed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CardRenewalResponse"
+        "404":
+          description: Card not found.
+  /pws/v2/pws_card_renewal/:
+    post:
+      operationId: cardRenewalV2
+      summary: Card Renewal V2
+      description: >
+        Renews an expiring card with control over the new expiry date and
+        carry-over of custom fields. Preferred over Card Renewal v1.
+      tags:
+        - Card issuance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CardRenewalV2Request"
+      responses:
+        "200":
+          description: Card renewed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CardRenewalResponse"
+        "404":
+          description: Card not found.
+        "409":
+          description: Card not renewable (outside eligibility window).
+  /pws/pws_create_card/:
+    post:
+      operationId: createCard
+      summary: Create Card
+      description: Creates a new card linked to an account.
+      tags:
+        - Card issuance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCardRequest"
+      responses:
+        "200":
+          description: Card created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CardRenewalResponse"
+components:
+  schemas:
+    CardRenewalRequest:
+      type: object
+      required:
+        - cardReference
+      properties:
+        cardReference:
+          type: string
+          description: Reference of the expiring card to renew.
+    CardRenewalV2Request:
+      type: object
+      required:
+        - cardReference
+      properties:
+        cardReference:
+          type: string
+          description: Reference of the expiring card to renew.
+        newExpiryDate:
+          type: string
+          format: date
+          description: Explicit new expiry date for the renewed card.
+        carryOverCustomFields:
+          type: boolean
+          description: Whether to copy custom fields from the previous card.
+    CreateCardRequest:
+      type: object
+      required:
+        - accountReference
+        - productCode
+      properties:
+        accountReference:
+          type: string
+        productCode:
+          type: string
+    CardRenewalResponse:
+      type: object
+      properties:
+        cardReference:
+          type: string
+        maskedPan:
+          type: string
+          example: "512345******0000"
+        expiryDate:
+          type: string
+          format: date
