@@ -1,0 +1,13 @@
+version: 1
+site: https://developers.example.com
+pages:
+  - root: docs
+    include: ["**/*.md"]
+    rewrite:
+      - { match: '^.*/', to: '' }
+    url: "/docs/{path}"
+    url_field: slug
+    unpublished_when: [hidden]
+openapi:
+  - spec: reference.json
+    url: "/reference/{operationId:kebab}"

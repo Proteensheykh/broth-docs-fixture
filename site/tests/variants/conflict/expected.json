@@ -1,0 +1,8 @@
+{
+  "_oracle": "broth.connectors.github_docs.pages.all_pages",
+  "pages": {},
+  "problems": {
+    "docs/a.mdx": "url-conflict",
+    "docs/a/index.mdx": "url-conflict"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "_synthetic": true,
+  "platform": "Mintlify",
+  "evidence": [
+    "https://www.mintlify.com/docs/organize/navigation.md - pages are MDX files referenced by extensionless path",
+    "https://www.mintlify.com/docs/api-playground/openapi-setup.md - the tag name is the URL path segment; x-mint.href sets the endpoint page URL",
+    "Inferred, not documented: the endpoint slug is the kebab-cased summary, and index pages serve their folder"
+  ],
+  "pages": {
+    "index.mdx": "https://docs.example.com/",
+    "quickstart.mdx": "https://docs.example.com/quickstart",
+    "guides/index.mdx": "https://docs.example.com/guides",
+    "guides/cards/renew-a-card.mdx": "https://docs.example.com/guides/cards/renew-a-card",
+    "openapi.yaml#createCard": "https://docs.example.com/api-reference/cards/create-a-card",
+    "openapi.yaml#renewCard": "https://docs.example.com/api-reference/card-lifecycle/renew-card",
+    "openapi.yaml#freezeCard": "https://docs.example.com/api-reference/freeze"
+  },
+  "problems": {
+    "openapi.yaml#health": "template-value-missing"
+  },
+  "absent": [
+    "snippets/note.mdx"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "_synthetic": true,
+  "platform": "ReadMe",
+  "evidence": [
+    "https://docs.readme.com/main/docs/url-paths-in-readme - guides at /docs/{slug}, reference at /reference/{slug}, for example /reference/get-cat-by-id",
+    "Inferred, not documented: guide slugs come from the file name or the slug field, with category folders left out of the URL; reference slugs are the kebab-cased operationId"
+  ],
+  "pages": {
+    "docs/Getting Started/welcome.md": "https://developers.example.com/docs/welcome",
+    "docs/Cards/renew-a-card.md": "https://developers.example.com/docs/renew-a-card",
+    "docs/Cards/fees.md": "https://developers.example.com/docs/card-fees",
+    "reference.json#getCardById": "https://developers.example.com/reference/get-card-by-id",
+    "reference.json#createCard": "https://developers.example.com/reference/create-card"
+  },
+  "problems": {
+    "docs/Cards/overview.md": "url-conflict",
+    "docs/Accounts/overview.md": "url-conflict",
+    "reference.json#GET /accounts": "template-value-missing"
+  },
+  "absent": [
+    "docs/Accounts/internal.md"
+  ]
+}

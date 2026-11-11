@@ -1,0 +1,42 @@
+{
+  "_synthetic": true,
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Banking API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/cards/{id}": {
+      "get": {
+        "operationId": "getCardById",
+        "summary": "Get a card",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cards": {
+      "post": {
+        "operationId": "createCard",
+        "summary": "Create a card",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "get": {
+        "summary": "List accounts",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

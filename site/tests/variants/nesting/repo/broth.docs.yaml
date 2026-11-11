@@ -1,0 +1,10 @@
+version: 1
+site: https://host.example.org/project
+pages:
+  - root: guides
+    include: ["cards/**/*.mdx"]
+    url: "/card-guides/{path}"
+  - root: guides
+    include: ["**/*.mdx"]
+    url: "/guides/{path}"
+    unpublished_when: [draft, hidden]

@@ -1,5 +1,5 @@
 version: 1
-site: https://developer.example.com
+site: https://proteensheykh.github.io/broth-docs-fixture
 pages:
   - root: docs
     include: ["**/*.mdx"]

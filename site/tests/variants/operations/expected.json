@@ -1,0 +1,17 @@
+{
+  "_oracle": "broth.connectors.github_docs.pages.all_pages",
+  "pages": {
+    "spec/payments.yaml#create_SEPA_transfer2": {
+      "url": "https://host.example.org/project/reference/transfers-fx-beta/create-sepa-transfer2",
+      "title": "Create a SEPA transfer"
+    },
+    "spec/payments.yaml#getV2CardPIN": {
+      "url": "https://host.example.org/project/reference/card-pi-ns/get-v2-card-pin",
+      "title": "Get a card PIN"
+    }
+  },
+  "problems": {
+    "spec/payments.yaml#GET /transfers": "template-value-missing",
+    "spec/payments.yaml#healthCheck": "template-value-missing"
+  }
+}

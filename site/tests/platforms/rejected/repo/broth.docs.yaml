@@ -1,0 +1,6 @@
+version: 1
+site: http://docs.example.com
+pages:
+  - include: ["**/*.mdx"]
+    url: "/{slug}"
+    sidebar: true

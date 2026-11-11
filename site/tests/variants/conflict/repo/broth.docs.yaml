@@ -1,0 +1,6 @@
+version: 1
+site: https://host.example.org
+pages:
+  - root: docs
+    include: ["**/*.mdx"]
+    url: "/d/{path}"

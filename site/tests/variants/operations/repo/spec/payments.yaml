@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  title: Payments API
+  version: "1.0"
+paths:
+  /cards/{id}/pin:
+    get:
+      operationId: getV2CardPIN
+      summary: Get a card PIN
+      tags: [Card PINs, Cards]
+      parameters:
+        - $ref: '#/components/parameters/CardId'
+      responses:
+        "200":
+          description: The PIN block
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PinBlock'
+  /transfers:
+    post:
+      operationId: create_SEPA_transfer2
+      summary: Create a SEPA transfer
+      tags: ["Transfers & FX (beta)"]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount: {type: integer, description: Minor units}
+                currency: {type: string, example: EUR}
+      responses:
+        "201": {description: Created}
+    get:
+      summary: List transfers without an operationId
+      tags: [Transfers]
+      responses:
+        "200": {description: OK}
+  /health:
+    get:
+      operationId: healthCheck
+      summary: Untagged health check
+      responses:
+        "200": {description: OK}
+  /debug:
+    get:
+      operationId: debugDump
+      summary: Internal debug
+      tags: [Ops]
+      x-internal: true
+      responses:
+        "200": {description: OK}
+components:
+  parameters:
+    CardId:
+      name: id
+      in: path
+      required: true
+      schema: {type: string}
+  schemas:
+    PinBlock:
+      type: object
+      properties:
+        block: {type: string}

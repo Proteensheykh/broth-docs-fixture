@@ -1,0 +1,53 @@
+# Publishes the docs at the URLs Broth cites for them (broth-service
+# docs/specs/2026-11-11-fixture-docs-hosting-design.md).
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r site/requirements.txt
+      - name: Test
+        run: python -I site/tests/test_build.py
+      - name: Build
+        run: python -I site/build.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Every URL opens with its title
+        run: |
+          pip install -r site/requirements.txt
+          python -I site/build.py
+          python -I site/smoke.py _site/urls.json

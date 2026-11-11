@@ -1,0 +1,34 @@
+{
+  "_oracle": "broth.connectors.github_docs.pages.all_pages",
+  "pages": {
+    "guides/a/b/c/deep-page.mdx": {
+      "url": "https://host.example.org/project/guides/a/b/c/deep-page",
+      "title": "Deep page"
+    },
+    "guides/a/index.mdx": {
+      "url": "https://host.example.org/project/guides/a",
+      "title": "Section A"
+    },
+    "guides/cards/freeze.mdx": {
+      "url": "https://host.example.org/project/card-guides/cards/freeze",
+      "title": "Freeze a card"
+    },
+    "guides/draft-false.mdx": {
+      "url": "https://host.example.org/project/guides/draft-false",
+      "title": "Still draft false"
+    },
+    "guides/heading-title.mdx": {
+      "url": "https://host.example.org/project/guides/heading-title",
+      "title": "Heading Title"
+    },
+    "guides/index.mdx": {
+      "url": "https://host.example.org/project/guides",
+      "title": "Home"
+    },
+    "guides/no_title_at_all.mdx": {
+      "url": "https://host.example.org/project/guides/no_title_at_all",
+      "title": "no_title_at_all"
+    }
+  },
+  "problems": {}
+}

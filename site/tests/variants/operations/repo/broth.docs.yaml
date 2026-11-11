@@ -1,0 +1,6 @@
+version: 1
+site: https://host.example.org/project
+openapi:
+  - spec: spec/payments.yaml
+    url: "/reference/{tag:kebab}/{operationId:kebab}"
+    unpublished_when: [x-internal]

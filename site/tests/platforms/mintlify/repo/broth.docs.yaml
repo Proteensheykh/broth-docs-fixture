@@ -1,0 +1,10 @@
+version: 1
+site: https://docs.example.com
+pages:
+  - include: ["**/*.mdx"]
+    exclude: ["snippets/**"]
+    url: "/{path}"
+openapi:
+  - spec: openapi.yaml
+    url: "/api-reference/{tag:kebab}/{summary:kebab}"
+    url_field: x-mint.href

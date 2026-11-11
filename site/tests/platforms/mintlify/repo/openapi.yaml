@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info: {title: Banking API, version: "1.0"}
+paths:
+  /cards:
+    post:
+      tags: [Cards]
+      summary: Create a card
+      operationId: createCard
+      responses: {"201": {description: Created}}
+  /cards/{id}/renew:
+    post:
+      tags: [Card Lifecycle]
+      summary: Renew card
+      operationId: renewCard
+      responses: {"200": {description: OK}}
+  /cards/{id}/freeze:
+    post:
+      tags: [Card Lifecycle]
+      summary: Freeze a card
+      operationId: freezeCard
+      x-mint:
+        href: /api-reference/freeze
+      responses: {"200": {description: OK}}
+  /health:
+    get:
+      summary: Health check
+      operationId: health
+      responses: {"200": {description: OK}}

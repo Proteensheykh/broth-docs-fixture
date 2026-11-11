@@ -1,0 +1,11 @@
+version: 1
+site: https://docs.example.com
+pages:
+  - root: docs
+    include: ["**/*.md", "**/*.mdx"]
+    rewrite:
+      - { match: '(^|/)\d+-', to: '\1' }
+      - { match: '(?i)(^|/)readme$', to: '\1index' }
+    url: "/docs/{path}"
+    url_field: slug
+    unpublished_when: [draft]
