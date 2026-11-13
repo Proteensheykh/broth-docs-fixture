@@ -127,6 +127,14 @@ class Fixture(unittest.TestCase):
                 text = _served_file(self.out, self.site, entry["url"]).read_text()
                 self.assertEqual(text.count("<h1"), 1)
 
+    def test_every_page_loads_the_widget_once(self) -> None:
+        files = [_served_file(self.out, self.site, e["url"]) for e in self.manifest]
+        for path in files + [self.out / "index.html", self.out / "404.html"]:
+            with self.subTest(file=str(path.relative_to(self.out))):
+                text = path.read_text()
+                self.assertEqual(text.count(build.EMBED_SNIPPET), 1)
+                self.assertLess(text.index(build.EMBED_SNIPPET), text.index("</body>"))
+
     def test_index_404_and_stylesheet(self) -> None:
         index = (self.out / "index.html").read_text()
         for entry in self.manifest:

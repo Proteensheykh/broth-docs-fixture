@@ -484,6 +484,14 @@ def operation_entries(contract: Contract, repo: Path) -> list[Entry]:
 
 # ---- the site ----
 
+# The Broth support widget, on every page, so the docs can be asked about where they are read.
+# The key is not a secret: it is in every page's source and only works from allowed sites.
+EMBED_SNIPPET = (
+    '<script src="https://kredete-e2e.vercel.app/embed.js" '
+    'data-key="bk_live_syGimD2ZjwtCWfxMNIckg3FPOKrK3GVj" '
+    'data-api="https://api-dev-9032.up.railway.app" async></script>'
+)
+
 
 def _layout(contract: Contract, title: str, main: str) -> str:
     base = contract.site_path
@@ -494,7 +502,7 @@ def _layout(contract: Contract, title: str, main: str) -> str:
         f"<link rel=\"stylesheet\" href=\"{base}/style.css\"></head><body>"
         f"<header><a href=\"{base}/\">Banking.Live docs fixture</a>"
         "<span>Synthetic docs that Broth's docs source is tested against</span></header>"
-        f"<main>{main}</main></body></html>\n"
+        f"<main>{main}</main>{EMBED_SNIPPET}</body></html>\n"
     )
 
 
